@@ -2,7 +2,30 @@ Attribute VB_Name = "ModDictionary"
 Option Explicit
 
 '連想配列関連モジュール
+Private Sub TestMakeDictFromArrayWithItem()
+'VBA-Dictionaryサンプル.xlsm用
 
+    Dim KaisoArray2D, KeyArray1D, ItemArray2D
+    KaisoArray2D = Range("F3:G14")
+    KeyArray1D = Range("H2:J2")
+    KeyArray1D = Application.Transpose(Application.Transpose(KeyArray1D))
+    ItemArray2D = Range("H3:J14")
+    
+    '配列の中身を表示確認
+    Call DPH(KaisoArray2D, , "KaisoArray2D")
+    Call DPH(KeyArray1D, , "KeyArray1D")
+    Call DPH(ItemArray2D, , "ItemArray2D")
+    
+    '階層型連想配列作成
+    Dim OutputDict As Object
+    Set OutputDict = MakeDictFromArrayWithItem(KaisoArray2D, KeyArray1D, ItemArray2D)
+    
+    '出力テスト
+    Debug.Print OutputDict("愛媛県")("今治市")("世帯") '→66980
+    Debug.Print OutputDict("徳島県")("鳴門市")("女") '→30999
+    Debug.Print OutputDict("高知県")("高知市")("男") '→157016
+
+End Sub
 
 Function MakeDictFromArrayWithItem(KaisoArray2D, KeyArray1D, ItemArray2D)
 '階層型配列から連想配列を作成する。
@@ -41,39 +64,18 @@ Function MakeDictFromArrayWithItem(KaisoArray2D, KeyArray1D, ItemArray2D)
     Dim Output As Object
     Set Output = 配列から階層型連想配列作成(KaisoArray2D, DictArray)
     
-    Set MakeDictFromArray = Output
+    Set MakeDictFromArrayWithItem = Output
     
 End Function
 
 Private Sub TestMakeDictFromArray()
-    
+'VBA-Dictionaryサンプル.xlsm用
+  
     'テスト用の配列の定義
     Dim KaisoArray2D, ItemArray1D
-    KaisoArray2D = Application.Transpose(Application.Transpose( _
-                    Array(Array("愛媛県", "県庁所在地"), _
-                    Array("愛媛県", "特産品"), _
-                    Array("愛媛県", "特産品"), _
-                    Array("愛媛県", "特産品"), _
-                    Array("愛媛県", "ゆるキャラ"), _
-                    Array("愛媛県", "ゆるキャラ"), _
-                    Array("香川県", "県庁所在地"), _
-                    Array("香川県", "特産品"), _
-                    Array("香川県", "特産品"), _
-                    Array("香川県", "特産品"), _
-                    Array("香川県", "特産品"), _
-                    Array("香川県", "ゆるキャラ"), _
-                    Array("徳島県", "県庁所在地"), _
-                    Array("徳島県", "特産品"), _
-                    Array("徳島県", "ゆるキャラ"), _
-                    Array("徳島県", "ゆるキャラ"), _
-                    Array("高知県", "県庁所在地"), _
-                    Array("高知県", "特産品"), _
-                    Array("高知県", "特産品"), _
-                    Array("高知県", "ゆるキャラ")) _
-                    ))
-    ItemArray1D = Application.Transpose(Application.Transpose( _
-            Array("松山市", "みかん", "タオル", "真珠", "バリィさん", "みきゃん", "高松市", "うどん", "醤油", "オリーブ", "素麺", "うどん脳", "徳島市", "すだち", "ししゃも猫", "すだちくん", "高松市", "かつお", "酒", "しんじょうくん") _
-            ))
+    KaisoArray2D = Range("B2:C21")
+    ItemArray1D = Range("D2:D21")
+    ItemArray1D = Application.Transpose(ItemArray1D)
     
     '配列の中身を表示確認
     Call DPH(KaisoArray2D, , "KaisoArray2D")
@@ -178,7 +180,11 @@ Private Function 配列から階層型連想配列作成(KaisoArray2D, ItemArray1D)
         TmpItemArray1D = 一次元配列の指定範囲取得(ItemArray1D, TmpItiArray)
         
         If M = 1 Then
-            Output.Add TmpValue, TmpItemArray1D
+            If UBound(TmpItemArray1D, 1) = 1 And IsObject(TmpItemArray1D(1)) = True Then
+                Output.Add TmpValue, TmpItemArray1D(1)
+            Else
+                Output.Add TmpValue, TmpItemArray1D
+            End If
         Else
             Set TmpDict = 配列から階層型連想配列作成(TmpArray, TmpItemArray1D)
             Output.Add TmpValue, TmpDict
