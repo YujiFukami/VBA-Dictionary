@@ -3,6 +3,48 @@ Option Explicit
 
 '連想配列関連モジュール
 
+
+Function MakeDictFromArrayWithItem(KaisoArray2D, KeyArray1D, ItemArray2D)
+'階層型配列から連想配列を作成する。
+'連想配列の末端要素がさらに連想配列（要素連想配列）となっていて、もととなるキー配列、アイテム配列を入力する。
+'各配列の要素の開始番号は1とすること
+'20210806作成
+
+'KaisoArray2D   :階層型配列 二次元配列
+'KeyArray1D     :要素連想配列のキー 一次元配列
+'ItemArray2D    :要素連想配列のアイテム 二次元配列
+
+
+    '引数チェック
+    Call CheckArray2D(KaisoArray2D, "KaisoArray2D") '2次元配列かチェック
+    Call CheckArray2DStart1(KaisoArray2D, "KaisoArray2D") '要素の開始番号が1かチェック
+    Call CheckArray1D(KeyArray1D, "KeyArray1D") '1次元配列かチェック
+    Call CheckArray1DStart1(KeyArray1D, "KeyArray1D") '要素の開始番号が1かチェック
+    Call CheckArray2D(ItemArray2D, "ItemArray2D") '2次元配列かチェック
+    Call CheckArray2DStart1(ItemArray2D, "ItemArray2D") '要素の開始番号が1かチェック
+    
+    If UBound(KaisoArray2D, 1) <> UBound(ItemArray2D, 1) Then
+        MsgBox ("「KaisoArray2D」と「ItemArray2D」の縦要素数を一致させてください")
+        Stop
+        End
+    End If
+    
+    If UBound(KeyArray1D, 1) <> UBound(ItemArray2D, 2) Then
+        MsgBox ("「KeyArray1D」の要素数と「ItemArray2D」の横要素数を一致させてください")
+        Stop
+        End
+    End If
+    
+    '計算処理
+    Dim DictArray
+    DictArray = 配列から連想配列リスト作成(ItemArray2D, KeyArray1D)
+    Dim Output As Object
+    Set Output = 配列から階層型連想配列作成(KaisoArray2D, DictArray)
+    
+    Set MakeDictFromArray = Output
+    
+End Function
+
 Private Sub TestMakeDictFromArray()
     
     'テスト用の配列の定義
@@ -48,40 +90,14 @@ Private Sub TestMakeDictFromArray()
     Debug.Print OutputDict("香川県")("県庁所在地")(1) '→高松市
 
 End Sub
-
-Function MakeDictFromArrayWithItem(KaisoArray2D, KeyArray1D, ItemArray2D)
-    
-    '引数チェック
-    Call CheckArray2D(KaisoArray2D, "KaisoArray2D") '2次元配列かチェック
-    Call CheckArray2DStart1(KaisoArray2D, "KaisoArray2D") '要素の開始番号が1かチェック
-    Call CheckArray1D(KeyArray1D, "KeyArray1D") '1次元配列かチェック
-    Call CheckArray1DStart1(KeyArray1D, "KeyArray1D") '要素の開始番号が1かチェック
-    Call CheckArray2D(ItemArray2D, "ItemArray2D") '2次元配列かチェック
-    Call CheckArray2DStart1(ItemArray2D, "ItemArray2D") '要素の開始番号が1かチェック
-    
-    If UBound(KaisoArray2D, 1) <> UBound(ItemArray2D, 1) Then
-        MsgBox ("「KaisoArray2D」と「ItemArray2D」の縦要素数を一致させてください")
-        Stop
-        End
-    End If
-    
-    If UBound(KeyArray1D, 1) <> UBound(ItemArray2D, 2) Then
-        MsgBox ("「KeyArray1D」の要素数と「ItemArray2D」の横要素数を一致させてください")
-        Stop
-        End
-    End If
-    
-    '計算処理
-    Dim DictArray
-    DictArray = 配列から連想配列リスト作成(ItemArray2D, KeyArray1D)
-    Dim Output As Object
-    Set Output = 配列から階層型連想配列作成(KaisoArray2D, DictArray)
-    
-    Set MakeDictFromArray = Output
-    
-End Function
-
 Function MakeDictFromArray(KaisoArray2D, ItemArray1D)
+'階層型配列から連想配列を作成する。
+'階層型配列と連想配列となる要素の配列を入力する
+'各配列の要素の開始番号は1とすること
+'20210806作成
+
+'KaisoArray2D   ：階層型配列　二次元配列
+'ItemArray1D    ：要素が入っている配列　一次元配列
 
     '引数チェック
     Call CheckArray2D(KaisoArray2D, "KaisoArray2D") '2次元配列かチェック
