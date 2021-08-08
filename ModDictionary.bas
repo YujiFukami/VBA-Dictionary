@@ -6,10 +6,39 @@ Private Sub TestMakeDictFromArrayWithItem()
 'VBA-DictionaryƒTƒ“ƒvƒ‹.xlsm—p
 
     Dim KaisoArray2D, KeyArray1D, ItemArray2D
-    KaisoArray2D = Range("F3:G14")
-    KeyArray1D = Range("H2:J2")
-    KeyArray1D = Application.Transpose(Application.Transpose(KeyArray1D))
-    ItemArray2D = Range("H3:J14")
+    KaisoArray2D = Application.Transpose(Application.Transpose( _
+                    Array(Array("ìŒ§", "‚¼s"), _
+                    Array("ìŒ§", "ŠÛ‹Ts"), _
+                    Array("ìŒ§", "âos"), _
+                    Array("“¿“‡Œ§", "“¿“‡s"), _
+                    Array("“¿“‡Œ§", "–Â–ås"), _
+                    Array("“¿“‡Œ§", "¬¼“‡s"), _
+                    Array("‚’mŒ§", "‚’ms"), _
+                    Array("‚’mŒ§", "ºŒËs"), _
+                    Array("‚’mŒ§", "ˆÀŒ|s"), _
+                    Array("ˆ¤•QŒ§", "¼Rs"), _
+                    Array("ˆ¤•QŒ§", "¡¡s"), _
+                    Array("ˆ¤•QŒ§", "‰F˜a“‡s")) _
+                    ))
+                    
+    KeyArray1D = Application.Transpose(Application.Transpose( _
+                  Array("¢‘Ñ", "’j", "—") _
+                  ))
+                  
+    ItemArray2D = Application.Transpose(Application.Transpose( _
+                    Array(Array(182005, 205038, 215905), _
+                    Array(43816, 53197, 56866), _
+                    Array(21356, 25368, 27829), _
+                    Array(114352, 123006, 135596), _
+                    Array(23233, 28123, 30999), _
+                    Array(15235, 18685, 20091), _
+                    Array(153676, 157016, 180344), _
+                    Array(6514, 6388, 7135), _
+                    Array(7608, 8334, 9268), _
+                    Array(230816, 241680, 273412), _
+                    Array(66980, 74341, 83844), _
+                    Array(32706, 35993, 41480)) _
+                    ))
     
     'ŠK‘wŒ^˜A‘z”z—ñì¬
     Dim OutputDict As Object
@@ -68,9 +97,32 @@ Private Sub TestMakeDictFromArray()
   
     'ƒeƒXƒg—p‚Ì”z—ñ‚Ì’è‹`
     Dim KaisoArray2D, ItemArray1D
-    KaisoArray2D = Range("B2:C21")
-    ItemArray1D = Range("D2:D21")
-    ItemArray1D = Application.Transpose(ItemArray1D)
+    KaisoArray2D = Application.Transpose(Application.Transpose( _
+                    Array(Array("ˆ¤•QŒ§", "Œ§’¡Šİ’n"), _
+                    Array("ˆ¤•QŒ§", "“ÁY•i"), _
+                    Array("ˆ¤•QŒ§", "“ÁY•i"), _
+                    Array("ˆ¤•QŒ§", "“ÁY•i"), _
+                    Array("ˆ¤•QŒ§", "‚ä‚éƒLƒƒƒ‰"), _
+                    Array("ˆ¤•QŒ§", "‚ä‚éƒLƒƒƒ‰"), _
+                    Array("ìŒ§", "Œ§’¡Šİ’n"), _
+                    Array("ìŒ§", "“ÁY•i"), _
+                    Array("ìŒ§", "“ÁY•i"), _
+                    Array("ìŒ§", "“ÁY•i"), _
+                    Array("ìŒ§", "“ÁY•i"), _
+                    Array("ìŒ§", "‚ä‚éƒLƒƒƒ‰"), _
+                    Array("“¿“‡Œ§", "Œ§’¡Šİ’n"), _
+                    Array("“¿“‡Œ§", "“ÁY•i"), _
+                    Array("“¿“‡Œ§", "‚ä‚éƒLƒƒƒ‰"), _
+                    Array("“¿“‡Œ§", "‚ä‚éƒLƒƒƒ‰"), _
+                    Array("‚’mŒ§", "Œ§’¡Šİ’n"), _
+                    Array("‚’mŒ§", "“ÁY•i"), _
+                    Array("‚’mŒ§", "“ÁY•i"), _
+                    Array("‚’mŒ§", "‚ä‚éƒLƒƒƒ‰")) _
+                    ))
+                    
+    ItemArray1D = Application.Transpose(Application.Transpose( _
+                Array("¼Rs", "‚İ‚©‚ñ", "ƒ^ƒIƒ‹", "^ì", "ƒoƒŠƒB‚³‚ñ", "‚İ‚«‚á‚ñ", "‚¼s", "‚¤‚Ç‚ñ", "İ–û", "ƒIƒŠ[ƒu", "‘f–Ë", "‚¤‚Ç‚ñ”]", "“¿“‡s", "‚·‚¾‚¿", "‚µ‚µ‚á‚à”L", "‚·‚¾‚¿‚­‚ñ", "‚¼s", "‚©‚Â‚¨", "ğ", "‚µ‚ñ‚¶‚å‚¤‚­‚ñ") _
+                ))
 
     'ŠK‘wŒ^˜A‘z”z—ñì¬
     Dim OutputDict As Object
