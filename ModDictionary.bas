@@ -11,11 +11,6 @@ Private Sub TestMakeDictFromArrayWithItem()
     KeyArray1D = Application.Transpose(Application.Transpose(KeyArray1D))
     ItemArray2D = Range("H3:J14")
     
-    '配列の中身を表示確認
-    Call DPH(KaisoArray2D, , "KaisoArray2D")
-    Call DPH(KeyArray1D, , "KeyArray1D")
-    Call DPH(ItemArray2D, , "ItemArray2D")
-    
     '階層型連想配列作成
     Dim OutputDict As Object
     Set OutputDict = MakeDictFromArrayWithItem(KaisoArray2D, KeyArray1D, ItemArray2D)
@@ -76,11 +71,7 @@ Private Sub TestMakeDictFromArray()
     KaisoArray2D = Range("B2:C21")
     ItemArray1D = Range("D2:D21")
     ItemArray1D = Application.Transpose(ItemArray1D)
-    
-    '配列の中身を表示確認
-    Call DPH(KaisoArray2D, , "KaisoArray2D")
-    Call DPH(ItemArray1D, , "ItemArray1D")
-    
+
     '階層型連想配列作成
     Dim OutputDict As Object
     Set OutputDict = MakeDictFromArray(KaisoArray2D, ItemArray1D)
@@ -283,4 +274,63 @@ Private Function 一次元配列の指定範囲取得(Array1D, ItiArray1D)
     一次元配列の指定範囲取得 = Output
     
 End Function
+
+
+Private Sub CheckArray1D(InputArray, Optional HairetuName$ = "配列")
+'入力配列が1次元配列かどうかチェックする
+'20210804
+
+    Dim Dummy%
+    On Error Resume Next
+    Dummy = UBound(InputArray, 2)
+    On Error GoTo 0
+    If Dummy <> 0 Then
+        MsgBox (HairetuName & "は1次元配列を入力してください")
+        Stop
+        Exit Sub '入力元のプロシージャを確認するために抜ける
+    End If
+
+End Sub
+
+Private Sub CheckArray2D(InputArray, Optional HairetuName$ = "配列")
+'入力配列が2次元配列かどうかチェックする
+'20210804
+
+    Dim Dummy2%, Dummy3%
+    On Error Resume Next
+    Dummy2 = UBound(InputArray, 2)
+    Dummy3 = UBound(InputArray, 3)
+    On Error GoTo 0
+    If Dummy2 = 0 Or Dummy3 <> 0 Then
+        MsgBox (HairetuName & "は2次元配列を入力してください")
+        Stop
+        Exit Sub '入力元のプロシージャを確認するために抜ける
+    End If
+
+End Sub
+
+Private Sub CheckArray1DStart1(InputArray, Optional HairetuName$ = "配列")
+'入力1次元配列の開始番号が1かどうかチェックする
+'20210804
+
+    If LBound(InputArray, 1) <> 1 Then
+        MsgBox (HairetuName & "の開始要素番号は1にしてください")
+        Stop
+        Exit Sub '入力元のプロシージャを確認するために抜ける
+    End If
+
+End Sub
+
+Private Sub CheckArray2DStart1(InputArray, Optional HairetuName$ = "配列")
+'入力2次元配列の開始番号が1かどうかチェックする
+'20210804
+
+    If LBound(InputArray, 1) <> 1 Or LBound(InputArray, 2) <> 1 Then
+        MsgBox (HairetuName & "の開始要素番号は1にしてください")
+        Stop
+        Exit Sub '入力元のプロシージャを確認するために抜ける
+    End If
+
+End Sub
+
 
