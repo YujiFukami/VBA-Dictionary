@@ -3,8 +3,7 @@
 
 # 使用方法
 使用するにはVBEに
-「ModDictionary.bas」「ModArray.bas」「ModImmediate.bas」「ModEnum.bas」
-をインポートすること
+「ModDictionary.bas」をインポートすること
 
 # 使い方の説明
 
