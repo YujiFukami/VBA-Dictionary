@@ -135,6 +135,7 @@ Private Sub TestMakeDictFromArray()
     Debug.Print OutputDict("香川県")("県庁所在地")(1) '→高松市
 
 End Sub
+
 Function MakeDictFromArray(KaisoArray2D, ItemArray1D)
 '階層型配列から連想配列を作成する。
 '階層型配列と連想配列となる要素の配列を入力する
