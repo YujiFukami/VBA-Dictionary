@@ -2,55 +2,6 @@ Attribute VB_Name = "ModDictionary"
 Option Explicit
 
 '連想配列関連モジュール
-Private Sub TestMakeDictFromArrayWithItem()
-'VBA-Dictionaryサンプル.xlsm用
-
-    Dim KaisoArray2D, KeyArray1D, ItemArray2D
-    KaisoArray2D = Application.Transpose(Application.Transpose( _
-                    Array(Array("香川県", "高松市"), _
-                    Array("香川県", "丸亀市"), _
-                    Array("香川県", "坂出市"), _
-                    Array("徳島県", "徳島市"), _
-                    Array("徳島県", "鳴門市"), _
-                    Array("徳島県", "小松島市"), _
-                    Array("高知県", "高知市"), _
-                    Array("高知県", "室戸市"), _
-                    Array("高知県", "安芸市"), _
-                    Array("愛媛県", "松山市"), _
-                    Array("愛媛県", "今治市"), _
-                    Array("愛媛県", "宇和島市")) _
-                    ))
-                    
-    KeyArray1D = Application.Transpose(Application.Transpose( _
-                  Array("世帯", "男", "女") _
-                  ))
-                  
-    ItemArray2D = Application.Transpose(Application.Transpose( _
-                    Array(Array(182005, 205038, 215905), _
-                    Array(43816, 53197, 56866), _
-                    Array(21356, 25368, 27829), _
-                    Array(114352, 123006, 135596), _
-                    Array(23233, 28123, 30999), _
-                    Array(15235, 18685, 20091), _
-                    Array(153676, 157016, 180344), _
-                    Array(6514, 6388, 7135), _
-                    Array(7608, 8334, 9268), _
-                    Array(230816, 241680, 273412), _
-                    Array(66980, 74341, 83844), _
-                    Array(32706, 35993, 41480)) _
-                    ))
-    
-    '階層型連想配列作成
-    Dim OutputDict As Object
-    Set OutputDict = MakeDictFromArrayWithItem(KaisoArray2D, KeyArray1D, ItemArray2D)
-    
-    '出力テスト
-    Debug.Print OutputDict("愛媛県")("今治市")("世帯") '→66980
-    Debug.Print OutputDict("徳島県")("鳴門市")("女") '→30999
-    Debug.Print OutputDict("高知県")("高知市")("男") '→157016
-
-End Sub
-
 Function MakeDictFromArrayWithItem(KaisoArray2D, KeyArray1D, ItemArray2D)
 '階層型配列から連想配列を作成する。
 '連想配列の末端要素がさらに連想配列（要素連想配列）となっていて、もととなるキー配列、アイテム配列を入力する。
@@ -91,50 +42,6 @@ Function MakeDictFromArrayWithItem(KaisoArray2D, KeyArray1D, ItemArray2D)
     Set MakeDictFromArrayWithItem = Output
     
 End Function
-
-Private Sub TestMakeDictFromArray()
-'VBA-Dictionaryサンプル.xlsm用
-  
-    'テスト用の配列の定義
-    Dim KaisoArray2D, ItemArray1D
-    KaisoArray2D = Application.Transpose(Application.Transpose( _
-                    Array(Array("愛媛県", "県庁所在地"), _
-                    Array("愛媛県", "特産品"), _
-                    Array("愛媛県", "特産品"), _
-                    Array("愛媛県", "特産品"), _
-                    Array("愛媛県", "ゆるキャラ"), _
-                    Array("愛媛県", "ゆるキャラ"), _
-                    Array("香川県", "県庁所在地"), _
-                    Array("香川県", "特産品"), _
-                    Array("香川県", "特産品"), _
-                    Array("香川県", "特産品"), _
-                    Array("香川県", "特産品"), _
-                    Array("香川県", "ゆるキャラ"), _
-                    Array("徳島県", "県庁所在地"), _
-                    Array("徳島県", "特産品"), _
-                    Array("徳島県", "ゆるキャラ"), _
-                    Array("徳島県", "ゆるキャラ"), _
-                    Array("高知県", "県庁所在地"), _
-                    Array("高知県", "特産品"), _
-                    Array("高知県", "特産品"), _
-                    Array("高知県", "ゆるキャラ")) _
-                    ))
-                    
-    ItemArray1D = Application.Transpose(Application.Transpose( _
-                Array("松山市", "みかん", "タオル", "真珠", "バリィさん", "みきゃん", "高松市", "うどん", "醤油", "オリーブ", "素麺", "うどん脳", "徳島市", "すだち", "ししゃも猫", "すだちくん", "高松市", "かつお", "酒", "しんじょうくん") _
-                ))
-
-    '階層型連想配列作成
-    Dim OutputDict As Object
-    Set OutputDict = MakeDictFromArray(KaisoArray2D, ItemArray1D)
-    
-    '出力テスト
-    Debug.Print OutputDict("愛媛県")("特産品")(2) '→タオル
-    Debug.Print OutputDict("愛媛県")("ゆるキャラ")(1) '→バリィさん
-    Debug.Print OutputDict("徳島県")("ゆるキャラ")(1) '→ししゃも猫
-    Debug.Print OutputDict("香川県")("県庁所在地")(1) '→高松市
-
-End Sub
 
 Function MakeDictFromArray(KaisoArray2D, ItemArray1D)
 '階層型配列から連想配列を作成する。
@@ -327,7 +234,6 @@ Private Function 一次元配列の指定範囲取得(Array1D, ItiArray1D)
     一次元配列の指定範囲取得 = Output
     
 End Function
-
 
 Private Sub CheckArray1D(InputArray, Optional HairetuName$ = "配列")
 '入力配列が1次元配列かどうかチェックする
