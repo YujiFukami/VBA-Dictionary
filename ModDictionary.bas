@@ -91,6 +91,44 @@ Function MakeDictFromArray(KaisoArray2D, ItemArray1D)
         
 End Function
 
+Function MakeDictFromArray1D(KeyArray1D, ItemArray1D)
+'配列から連想配列を作成する
+'各配列の要素の開始番号は1とすること
+'20210806作成
+
+'KaisoArray2D   ：階層型配列　二次元配列
+'ItemArray1D    ：要素が入っている配列　一次元配列
+
+    '引数チェック
+    Call CheckArray1D(KeyArray1D, "KeyArray1D") '2次元配列かチェック
+    Call CheckArray1DStart1(KeyArray1D, "KeyArray1D") '要素の開始番号が1かチェック
+    Call CheckArray1D(ItemArray1D, "ItemArray1D") '1次元配列かチェック
+    Call CheckArray1DStart1(ItemArray1D, "ItemArray1D") '要素の開始番号が1かチェック
+    If UBound(KeyArray1D, 1) <> UBound(ItemArray1D, 1) Then
+        MsgBox ("「KeyArray1D」と「ItemArray1D」の縦要素数を一致させてください")
+        Stop
+        End
+    End If
+    
+    Dim I&, J&, K&, M&, N& '数え上げ用(Long型)
+    N = UBound(KeyArray1D, 1)
+    
+    Dim Output As Object
+    Set Output = CreateObject("Scripting.Dictionary")
+    
+    Dim TmpKey$
+    
+    For I = 1 To N
+        TmpKey = KeyArray1D(I)
+        If Output.Exists(TmpKey) = False Then
+            Output.Add TmpKey, ItemArray1D(I)
+        End If
+    Next I
+    
+    Set MakeDictFromArray1D = Output
+        
+End Function
+
 Private Function 配列から連想配列リスト作成(ItemArray2D, KeyArray1D)
     
     Dim TmpDict As Object
