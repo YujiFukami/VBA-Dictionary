@@ -22,7 +22,7 @@
 
 各サンプルの実行ボタンとして、
 
-「MakeDictFromArrayのテスト」「MakeDictFromArrayWithItemのテスト」「MakeDictFromArray1Dのテスト」が設定してある。
+「MakeDictFromArray2Dのテスト」「MakeDictFromArrayWithItemのテスト」「MakeDictFromArray1Dのテスト」が設定してある。
 
 ![実行前](ReadMe用/実行前.jpg)
 
@@ -34,7 +34,7 @@
 ##  それぞれのプロシージャ中身
 
 
-「MakeDictFromArrayのテスト」登録のプロシージャの中身
+「MakeDictFromArray2Dのテスト」登録のプロシージャの中身
 
 ![中身1](ReadMe用/中身1.jpg)
 
@@ -62,7 +62,7 @@
 
 ##  各プロシージャの紹介
 
-プロシージャ名：MakeDictFromArray
+プロシージャ名：MakeDictFromArray2D
 
 階層型配列から連想配列を作成する。
 
@@ -110,9 +110,9 @@ KeyとItemのそれぞれ一次元配列階層型配列から連想配列を作�
 ### 設定1（使用モジュール）
 
 -  ModTest.bas
--  ModMakeDictFromArray.bas
--  ModMakeDictFromArrayWithItem.bas
+-  ModMakeDictFromArray2D.bas
 -  ModMakeDictFromArray1D.bas
+-  ModMakeDictFromArrayWithItem.bas
 
 ### 設定2（参照ライブラリ）
 なし
