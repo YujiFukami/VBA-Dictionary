@@ -17,7 +17,7 @@ Function MakeDictFromArray1D(KeyArray1D, ItemArray1D)
 '各配列の要素の開始番号は1とすること
 '20210806作成
 
-'KaisoArray2D   ：階層型配列　二次元配列
+'KeyArray1D   ：階層型配列　二次元配列
 'ItemArray1D    ：要素が入っている配列　一次元配列
 
     '引数チェック
