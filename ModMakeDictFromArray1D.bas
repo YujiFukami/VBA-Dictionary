@@ -17,8 +17,8 @@ Function MakeDictFromArray1D(KeyArray1D, ItemArray1D)
 '各配列の要素の開始番号は1とすること
 '20210806作成
 
-'KeyArray1D   ：階層型配列　二次元配列
-'ItemArray1D    ：要素が入っている配列　一次元配列
+'KeyArray1D   ：Keyが入った一次元配列
+'ItemArray1D  ：Itemが入った一次元配列
 
     '引数チェック
     Call CheckArray1D(KeyArray1D, "KeyArray1D") '2次元配列かチェック
