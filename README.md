@@ -24,11 +24,11 @@
 
 「MakeDictFromArrayのテスト」「MakeDictFromArrayWithItemのテスト」「MakeDictFromArray1Dのテスト」が設定してある。
 
-![実行前](Readme用/実行前.jpg)
+![実行前](ReadMe用/実行前.jpg)
 
 各実行ボタンを押した後。
 
-![実行後](Readme用/実行後.jpg)
+![実行後](ReadMe用/実行後.jpg)
 
 
 ##  それぞれのプロシージャ中身
@@ -36,28 +36,28 @@
 
 「MakeDictFromArrayのテスト」登録のプロシージャの中身
 
-![中身1](Readme用/中身1.jpg)
+![中身1](ReadMe用/中身1.jpg)
 
 入力の詳細
 
-![入力1](Readme用/入力1.jpg)
+![入力1](ReadMe用/入力1.jpg)
 
 
 「MakeDictFromArrayWithItemのテスト」登録のプロシージャの中身
 
-![中身2](Readme用/中身2.jpg)
+![中身2](ReadMe用/中身2.jpg)
 
 入力の詳細
 
-![入力2](Readme用/入力2.jpg)
+![入力2](ReadMe用/入力2.jpg)
 
 「MakeDictFromArray1Dのテスト」登録のプロシージャの中身
 
-![中身3](Readme用/中身3.jpg)
+![中身3](ReadMe用/中身3.jpg)
 
 入力の詳細
 
-![入力3](Readme用/入力3.jpg)
+![入力3](ReadMe用/入力3.jpg)
 
 
 ##  各プロシージャの紹介
