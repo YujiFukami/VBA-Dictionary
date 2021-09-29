@@ -18,7 +18,7 @@ Option Explicit
 '------------------------------
 
 
-Function MakeDictFromArray2D(KaisoArray2D, ItemArray1D)
+Public Function MakeDictFromArray2D(KaisoArray2D, ItemArray1D)
 '配列から連想配列を作成する。
 '二次元配列から階層状態を取得し、複数のKeyとして扱う
 '各配列の要素の開始番号は1とすること
