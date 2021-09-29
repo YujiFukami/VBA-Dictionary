@@ -20,7 +20,7 @@ Option Explicit
 '------------------------------
 
 
-Function MakeDictFromArrayWithItem(VerticalKeyArray2D, HorizontalKeyArray1D, ItemArray2D)
+Public Function MakeDictFromArrayWithItem(VerticalKeyArray2D, HorizontalKeyArray1D, ItemArray2D)
 '二次元配列から連想配列を作成する。
 '連想配列の末端要素がさらに連想配列（要素連想配列）となっていて、もととなるキー配列、アイテム配列を入力する。
 '各配列の要素の開始番号は1とすること
