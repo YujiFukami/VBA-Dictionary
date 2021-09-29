@@ -12,7 +12,7 @@ Option Explicit
 '------------------------------
 
 
-Function MakeDictFromArray1D(KeyArray1D, ItemArray1D)
+Public Function MakeDictFromArray1D(KeyArray1D, ItemArray1D)
 '配列から連想配列を作成する
 '各配列の要素の開始番号は1とすること
 '20210806作成
