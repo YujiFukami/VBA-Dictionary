@@ -11,11 +11,6 @@ Option Explicit
 '一次元配列の指定範囲取得                ・・・元場所：FukamiAddins3.ModDictionary
 '配列から階層型連想配列作成              ・・・元場所：FukamiAddins3.ModDictionary
 
-'------------------------------
-
-
-'連想配列関連モジュール
-'------------------------------
 
 
 Public Function MakeDictFromArray2D(KaisoArray2D, ItemArray1D)
