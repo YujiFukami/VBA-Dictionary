@@ -5,11 +5,6 @@ Option Explicit
 'CheckArray1D       ・・・元場所：FukamiAddins3.ModDictionary
 'CheckArray1DStart1 ・・・元場所：FukamiAddins3.ModDictionary
 
-'------------------------------
-
-
-'連想配列関連モジュール
-'------------------------------
 
 
 Public Function MakeDictFromArray1D(KeyArray1D, ItemArray1D)
