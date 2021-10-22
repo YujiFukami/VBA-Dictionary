@@ -13,11 +13,6 @@ Option Explicit
 '配列の先頭列値に一致するもののみ配列抽出・・・元場所：FukamiAddins3.ModDictionary
 '一次元配列の指定範囲取得                ・・・元場所：FukamiAddins3.ModDictionary
 
-'------------------------------
-
-
-'連想配列関連モジュール
-'------------------------------
 
 
 Public Function MakeDictFromArrayWithItem(VerticalKeyArray2D, HorizontalKeyArray1D, ItemArray2D)
